@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://dev.amarbike.com/laravel/public/ -->
+<html class="gr__dev_amarbike_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>amarbike</title>
+
+  <!-- Compiled and minified CSS -->
+    <link media="all" type="text/css" rel="stylesheet" href="./amarbike_files/bagpakk.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./amarbike_files/normalize.css">
+
+    <style type="text/css"></style><link media="all" type="text/css" rel="stylesheet" href="./amarbike_files/demo.css">
+
+    <link rel="stylesheet" type="text/css" href="./amarbike_files/font-awesome.min.css">
+		<link rel="stylesheet" href="./amarbike_files/sweetalert.min.css" media="screen" title="no title" charset="utf-8">
+  <!-- Compiled and minified JavaScript -->
+	<script type="text/javascript" src="./amarbike_files/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./amarbike_files/js/app.js"></script>
+    <script type="text/javascript" src="./amarbike_files/js/fairCalculate.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript" charset="UTF-8" src="./amarbike_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./amarbike_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./amarbike_files/stats.js"></script></head>
+<body onload="success" data-gr-c-s-loaded="true" ng-app="AmarBike">
+	<header class="font-color-alt container" id="homepage-hero">
+		<div class="wrap text-center">
+			<img src="./amarbike_files/logo.png">
+			<h2 class="small-boy">আমার শহর</h2>
+			<h2 class="big-boy">amarbike</h2>
+			<p class="small-boy">The Fastest Communitng Service in Bangladesh</p>
+
+		</div>
+	</header>
+		<section id="wrapper">
+
+
+		<script type="text/javascript" src="./amarbike_files/js"></script>
+		    <article>
+
+		    </article>
+		<script>
+		function success(position) {
+		  var mapcanvas = document.createElement('div');
+		  mapcanvas.id = 'mapcontainer';
+		  mapcanvas.style.height = '400px';
+		  mapcanvas.style.width = '600px';
+
+		  document.querySelector('article').appendChild(mapcanvas);
+
+		  var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+		  var options = {
+		    zoom: 15,
+		    center: coords,
+		    mapTypeControl: false,
+		    navigationControlOptions: {
+		    	style: google.maps.NavigationControlStyle.SMALL
+		    },
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		  };
+		  var map = new google.maps.Map(document.getElementById("mapcontainer"), options);
+
+		  var marker = new google.maps.Marker({
+		      position: coords,
+		      map: map,
+		      title:"You are here!"
+		  });
+		}
+
+		if (navigator.geolocation) {
+		  navigator.geolocation.getCurrentPosition(success);
+		} else {
+		  error('Geo Location is not supported');
+		}
+
+</script>
+</section>
+
+			<section id="lead" class="container font-color-alt">
+		<div class="wrap text-center">
+			<h2 class="text-center">Driver Available at Areas</h2>
+			<div class="col-4 first">
+
+				<p class="small-boy">
+					Mirpur<sup>2</sup>
+				</p>
+
+		</div>
+		<div class="col-4">
+
+			<p class="small-boy">
+				Bashundhara<sup>2</sup>
+			</p>
+
+	</div>
+	<div class="col-4 last">
+
+		<p class="small-boy">
+			New Market<sup>1</sup>
+		</p>
+
+</div>
+
+	</div></section>
+		<section class="container text-center">
+		<div class="wrap" ng-controller="MainController">
+			<div class="col-4 first">
+				<p>
+					<i aria-hidden="true" class="fa fa-map-marker fa-4x"></i>
+				</p>
+				<h3>Your Location</h3>
+				<p class="caption small">
+					<label>Area</label>
+					<select ng-model="source" ng-options="currOption for currOption in options" ng-change="update()"> <option value=''>- Select Any Option -</option></select>
+				</p>
+				<h3>Pick Up Point</h3>
+				<p class="caption small">
+					<label>Point</label>
+						<select>
+							<option>Select an option</option>
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+						</select>
+				</p>
+			</div>
+			<div class="col-4">
+				<p>
+					<i class="fa fa-map fa-4x"></i>
+				</p>
+				<h3>Destination</h3>
+				<p class="caption small">
+					<label>Area</label>
+						<select ng-model="destination" ng-options="currOption for currOption in options" ng-change="update()"> <option value=''>- Select Any Option -</option></select>
+				</p>
+				<h3>Drop Off Point</h3>
+				<p class="caption small">
+					<label>Point</label>
+						<select>
+							<option>Select an option</option>
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+						</select>
+				</p>
+				<p><h3>Cost: </h3><h4>{{cost}}</h4></p>
+			</div>
+			<div class="col-4 last">
+				<p>
+					<i class="fa fa-phone fa-4x"></i>
+				</p>
+				<h3>Your Information</h3>
+				<form class="" action="http://dev.amarbike.com/laravel/public/book" method="get">
+					  <input type="hidden" name="_token" value="W9Se9ICNhfmr2OUXY9UBgNLSb34ziUijneW3G9Mk">
+
+				<p class="caption small">
+				<input type="text" name="name" value="" placeholder="Name">
+				<input type="text" name="mobile" value="" placeholder="contact number">
+
+				</p>
+				<h3>Book</h3>
+				<p class="caption small">
+					<button class="button-big" type="submit" onclick="sal()">Book <i class="fa fa-edit"></i> </button>
+				</p>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<footer class="site-footer text-center">
+		<div class="wrap">
+			<small><a href="http://csag.co/">3bit Tech Ltd</a></small>
+		</div>
+	</footer>
+	<script type="text/javascript" src="./amarbike_files/sweetalert.min.js"></script>
+	<script type="text/javascript">
+	function sal(){
+	swal({   title: "Success!",   text: "Thank you for choosing amarbike. We will get back to you in a minute",   type: "success",   confirmButtonText: "Cool" });
+}
+	</script>
+
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
